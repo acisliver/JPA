@@ -16,11 +16,16 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                            .getResultList();
-            for (Member member : result) {
-                System.out.println("member.name = " + member.getName());
-            }
+
+            // 비영속
+            Member member = new Member();
+            member.setId(100L);
+            member.setName("Hello");
+
+            // 영속
+            System.out.println("====== BEFORE ======");
+            em.persist(member);
+            System.out.println("====== AFTER =======");
 
             tx.commit();
         } catch (Exception e) {
