@@ -18,18 +18,13 @@ public class JpaMain {
         try {
 
             // 비영속
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("Hello");
+            Member member1 = new Member(100L, "A");
+            Member member2 = new Member(100L, "B");
 
             // 영속
-            System.out.println("====== BEFORE ======");
-            em.persist(member);
-            System.out.println("====== AFTER =======");
-
-            Member findMember1 = em.find(Member.class, 100L);
-            Member findMember2 = em.find(Member.class, 100L);
-            System.out.println(findMember1 == findMember2); //true
+            em.persist(member1);
+            em.persist(member2);
+            System.out.println("======================");
 
             tx.commit();
         } catch (Exception e) {
