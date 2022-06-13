@@ -27,9 +27,9 @@ public class JpaMain {
             em.persist(member);
             System.out.println("====== AFTER =======");
 
-            Member findMember = em.find(Member.class, 100L);
-            System.out.println("findMember.getId() = " + findMember.getId());
-            System.out.println("findMember.getName() = " + findMember.getName());
+            Member findMember1 = em.find(Member.class, 100L);
+            Member findMember2 = em.find(Member.class, 100L);
+            System.out.println(findMember1 == findMember2); //true
 
             tx.commit();
         } catch (Exception e) {
