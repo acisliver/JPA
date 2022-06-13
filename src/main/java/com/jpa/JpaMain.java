@@ -18,9 +18,11 @@ public class JpaMain {
         try {
 
             // 영속
-            Member member = em.find(Member.class, 100L);
-            member.setName("ZZZZ");
+            Member member = new Member(100L, "A");
+            em.persist(member);
+            em.flush();
 
+            System.out.println("===============");
 
             tx.commit();
         } catch (Exception e) {
